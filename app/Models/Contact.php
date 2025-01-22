@@ -13,4 +13,9 @@ class Contact extends Model
     public test() {
         return 'teste';
     }
+
+    public anotherWrongMethod(): Test
+    {
+        return Xyz;
+    }
 }
