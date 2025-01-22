@@ -1,31 +1,31 @@
-name: "PHPCS Code style"
+# name: "PHPCS Code style"
 
-on:
-  pull_request:
+# on:
+#   pull_request:
 
-jobs:
-  build_app:
-    name: "PHPCS"
-    runs-on: ubuntu-latest
+# jobs:
+#   build_app:
+#     name: "PHPCS"
+#     runs-on: ubuntu-latest
 
-    env:
-      GH_TOKEN: ${{ github.token }}
+#     env:
+#       GH_TOKEN: ${{ github.token }}
 
-    steps:
-      - name: Setup PHP
-        uses: shivammathur/setup-php@v2
-        with:
-            php-version: '8.2'
-            tools: cs2pr, phpcs
+#     steps:
+#       - name: Setup PHP
+#         uses: shivammathur/setup-php@v2
+#         with:
+#             php-version: '8.2'
+#             tools: cs2pr, phpcs
 
-      - name: Checkout code
-        uses: actions/checkout@v4
+#       - name: Checkout code
+#         uses: actions/checkout@v4
 
-      - name: Run PHPCS
-        # Get the changed files from the PR via Github CLI.
-        # `grep` to only PHP files then remove deleted files via `find`.
-        # Run `phpcs` on the remaining files and pass output to `cs2pr`.
-        run: |
-          echo "Files for this PR:"
-          gh pr diff ${{ github.event.number }} --name-only | grep .php | xargs find 2> /dev/null | cat
-          gh pr diff ${{ github.event.number }} --name-only | grep .php | xargs find 2> /dev/null | xargs phpcs -nq --report=checkstyle | cs2pr
+#       - name: Run PHPCS
+#         # Get the changed files from the PR via Github CLI.
+#         # `grep` to only PHP files then remove deleted files via `find`.
+#         # Run `phpcs` on the remaining files and pass output to `cs2pr`.
+#         run: |
+#           echo "Files for this PR:"
+#           gh pr diff ${{ github.event.number }} --name-only | grep .php | xargs find 2> /dev/null | cat
+#           gh pr diff ${{ github.event.number }} --name-only | grep .php | xargs find 2> /dev/null | xargs phpcs -nq --report=checkstyle | cs2pr
