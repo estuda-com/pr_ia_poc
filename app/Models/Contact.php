@@ -18,4 +18,12 @@ class Contact extends Model
     {
         return Xyz;
     }
+
+    public function test2(){
+    return 'problem here';
+    }
+
+    public function test3(){
+        return '15' + 2;
+    }
 }
